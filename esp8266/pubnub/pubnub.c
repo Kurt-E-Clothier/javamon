@@ -132,10 +132,11 @@ static void IFA pubnub_dnsFoundCB(const char *name, ip_addr_t *ip, void *arg)
 static void IFA pubnub_conCB(void *arg)
 {
 	DEBUG_PRINT(("\n\rConnected to Pubnub\r\n"));
-	pb->connectedCB();
 	pb->last_result = PNR_OK;
 	pb->state = PS_WAIT_SEND;
+	pb->trans = INIT;
 	pubnub_httpGet("");
+	pb->connectedCB();
 }
 
 /** 
@@ -174,7 +175,7 @@ static void IFA pubnub_reconCB(void *arg, sint8 err)
  */
 static void IFA pubnub_sentCB(void *arg)
 {
-	DEBUG_PRINT(("Data Sent\n\r"));
+	DEBUG_PRINT(("\nData Sent\n\r"));
 
 	if(pb->state == PS_WAIT_SEND) {
 		pb->state = PS_WAIT_RECV;
@@ -191,18 +192,25 @@ static void IFA pubnub_sentCB(void *arg)
  */
 static void IFA pubnub_recvCB(void *arg, char *data, unsigned short len)
 {
-	DEBUG_PRINT(("Data Received:\n\r%s\n\r", data));
+	DEBUG_PRINT(("\nData Received:\n\r%s\n\r", data));
 	pb->state = PS_IDLE;
 	pb->last_result = PNR_OK;
 
 	switch(pb->trans) {
 	
-		case PBTT_PUBLISH:
+		case INIT:
+			pb->state = PS_IDLE;
+			pb->last_result = PNR_OK;
+			if (subscribed)
+				pubnub_autoSubscribe();
+			break;
+
+		case PUB:
 			pb->state = PS_IDLE;
 			pb->last_result = PNR_OK;
 			break;
 
-		case PBTT_INIT_SUB:
+		case INIT_SUB:
 			memcpy(pb->http_reply, data, len);
 			parse_subscribe_response();
 
@@ -210,10 +218,10 @@ static void IFA pubnub_recvCB(void *arg, char *data, unsigned short len)
 			pb->state = PS_IDLE;
 
 			// Subscribe again with valid timetoken
-			pubnub_autoSubscribe();
+			//pubnub_autoSubscribe();
 			break;
 
-		case PBTT_SUBSCRIBE:
+		case SUB:
 			memcpy(pb->http_reply, data, len);
 			parse_subscribe_response();
 
@@ -224,8 +232,8 @@ static void IFA pubnub_recvCB(void *arg, char *data, unsigned short len)
 			pb->subscribeCB(pb->http_msgIn);
 			break;
 
-		case PBTT_NONE:
-		case PBTT_LEAVE:
+		case NONE:
+		case LEAVE:
 		default:
 			break;
 	}
@@ -293,7 +301,7 @@ void IFA pubnub_init(const char *publish_key, const char *subscribe_key)
 bool IFA pubnub_publish(const char *channel, const char *message)
 {
 	if(pb->state != PS_IDLE) {
-		if (pb->trans == PBTT_SUBSCRIBE && pb->state == PS_WAIT_RECV) {
+		if (pb->trans == SUB && pb->state == PS_WAIT_RECV) {
 			DEBUG_PRINT(("\nWaiting on subscription(s)!\n"));
 		}
 		else {
@@ -308,7 +316,7 @@ bool IFA pubnub_publish(const char *channel, const char *message)
 
 	publishRequest = false;
 
-	pb->trans = PBTT_PUBLISH;
+	pb->trans = PUB;
 	pb->http_len = sprintf(pb->http_msgOut, "publish/%s/%s/0/%s/0/", 
 								pb->publish_key, pb->subscribe_key, channel);
 
@@ -370,9 +378,9 @@ static bool IFA pubnub_autoSubscribe(void)
 
 	// First, we have to get a valid timetoken
 	if (pb->timetoken[1] == '\0')
-		pb->trans = PBTT_INIT_SUB;
+		pb->trans = INIT_SUB;
 	else	
-		pb->trans = PBTT_SUBSCRIBE;
+		pb->trans = SUB;
 	
 	memset(pb->http_reply, 0, PUBNUB_REPLY_MAXLEN);	
 	
@@ -381,10 +389,8 @@ static bool IFA pubnub_autoSubscribe(void)
 		pb->subscribe_key, 
 		pb->subscribe_channel, 
 		pb->timetoken,
-		pb->uuid ? "uuid=" : "", 
-		pb->uuid ? pb->uuid : "",
-		pb->uuid && pb->auth ? "&" : "",
-		pb->uuid && pb->auth ? "auth=" : "", 
+		pb->uuid ? "uuid=" : "", pb->uuid ? pb->uuid : "",
+		pb->uuid && pb->auth ? "&" : "", pb->uuid && pb->auth ? "auth=" : "", 
 		pb->uuid && pb->auth ? pb->auth : "",
 		"", "0.1");
 	
@@ -414,7 +420,8 @@ bool IFA pubnub_subscribe(const char *channel, Pubnub_subscribeCB subCB)
 	pb->subscribe_channel = channel;
 	pb->subscribeCB = subCB;
 	subscribed = true;
-	return pubnub_autoSubscribe();
+	//return pubnub_autoSubscribe();
+	return false;
 }
 
 /** 

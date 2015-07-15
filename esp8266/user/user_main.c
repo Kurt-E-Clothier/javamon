@@ -26,7 +26,8 @@
 	- Software TWI Master - Requests data about scale every 5 seconds.
 		If data has changed, the new value is published using PubNub.
 
-	- Send information like this: {"columns":[["Coffee",X]]}    where x is 0-100 
+	- Send information like this: {"columns":[["Coffee",X]]}    
+		where x is the weight in grams 
 		This formatting is used by the web interface to display the data.
 
 	- Serial Debugging available: rate (9600) set in include/user_config.h
@@ -79,7 +80,7 @@ static void IFA initGPIO(void);
 
 static void IFA PN_connectedCB(void);			// Callback for PubNub Connections
 static void IFA PN_connErrorCB(sint8 error);	// Callback for PubNub Connection Error
-static void IFA subscribeCB(char *m);			// Callback for PubNub Subscriptions
+static void IFA PN_subscribeCB(char *m);		// Callback for PubNub Subscriptions
 static void IFA connectedCB(void);				// Callback for network connection
 static void IFA network_checkIP(void);			// Check for IP address
 
@@ -361,6 +362,7 @@ static void IFA PN_subscribeCB(char *m)
 static void IFA PN_connectedCB(void)
 {
 	DEBUG_PRINT(("\nPubnub connection callback...\n"));
+
 
 	// Request initial publish
 	stat_flag |= REQUEST_PUBLISH;

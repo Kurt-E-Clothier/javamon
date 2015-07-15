@@ -58,15 +58,22 @@ typedef struct espconn Espconn;
 
 // Pubnub Transaction States
 enum pubnub_trans {
-	PBTT_NONE,		// No Transactions at all
-	PBTT_INIT_SUB,	// Initial subscribe to get timetoken
-	PBTT_SUBSCRIBE,	// Subscribe Transaction
-	PBTT_PUBLISH,	// Publish Transaction
-	PBTT_LEAVE,		// Leave (channel(s)) transaction
+	NONE,		// No transations
+	INIT,		// Initial GET
+	INIT_SUB,	// Sub with a TimeToken of 0
+	SUB,		// Subscribe
+	PUB,		// Publish
+	LEAVE,		// Leave channel(s)
 };
 
 // Pubnub States
 enum pubnub_state {
+	IDLE,			// Line is Idle
+	WAIT_DNS,		// Waiting for DNS 
+	WAIT_CONNECT,	// Connected
+	WAIT_SEND,		// Waiting for message to send
+	WAIT_RECV,		// Waiting for message to be received
+	RECV,			//
 	PS_IDLE,			// Line is Idle
 	PS_WAIT_DNS,		// Waiting for DNS 
 	PS_WAIT_CONNECT,	// Connected
