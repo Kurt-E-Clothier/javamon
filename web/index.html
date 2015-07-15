@@ -101,9 +101,8 @@
                              
                     }
                     else if(newLevel <= brewLevel){
-                            //document.getElementById("status").style.display = "none"; 
-                            element.innerHTML = "Get It While Its Hot!";                        
-
+                        document.getElementById("status").style.display = "";  
+                        var element = document.getElementById("status");                                         element.innerHTML = "Get It While Its Hot!";                      
                     }
                     brewLevel = newLevel;
               }
