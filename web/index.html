@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>JavaMon</title>
+	<link href=javamon.css rel=stylesheet type=text/css>
+    <link href=styles.css rel=stylesheet type=text/css>
+
+	<meta name="author" content="Kurt E. Clothier, Justin Platz">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="Coffee Level Monitor">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    
+    <script type="text/javascript" src="http://pubnub.github.io/eon/lib/eon-chart.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://pubnub.github.io/eon/lib/eon.css" />
+
+    
+  
+<link rel="stylesheet" type="text/css" href="../bower_components/c3/c3.min.css">
+    <script src="../bower_components/pubnub/web/pubnub.min.js"></script>
+    <script src="../bower_components/d3/d3.min.js"></script>
+    <script src="../bower_components/c3/c3.min.js"></script>
+    <script src="../bower_components/subsub/subsub.js"></script>
+
+    <script src="../pubnub-c3.js"></script>
+    
+</head>
+
+<body style="text-align:center; background: #5D9CEC">
+
+
+    
+    <h2 id="status" class="red"> </h2>
+    
+    <div id="chart"></div>
+    
+    <div id="reset" style="display: none;">
+        <h1 aria-label="Flubber" style="font-size: 6em;">
+            <span class="char1" aria-hidden="true">Gotta Check</span></br>
+            <span class="char2" aria-hidden="true">That</span>
+            <span class="char3" aria-hidden="true">Scale</span>
+        </h1>
+    </div>
+    
+    <div id="missing" style="display: none;">
+        <h1 aria-label="Flubber" style="font-size: 6em;">
+            <span class="char1" aria-hidden="true">Cant Find</span></br>
+            <span class="char2" aria-hidden="true">That Darn</span>
+            <span class="char3" aria-hidden="true">Coffee Pot</span>
+        </h1>
+    </div>
+    
+    <script>
+        
+        var pubnub = PUBNUB.init({
+            publish_key: 'demo',
+            subscribe_key: 'demo'
+        });
+        
+        var channel = "javamon";
+        var brewLevel = 0;
+        var newLevel = 0;
+        eon.chart({
+          pubnub:pubnub,
+          channel: channel,
+          message: function(m){
+              //Pot is missing
+              if(m.columns[0][1] < 850){
+                document.getElementById("chart").style.display = "none";
+                document.getElementById("status").style.display = "none";
+                document.getElementById("missing").style.display = "";
+                document.getElementById("reset").style.display = "none";                 
+                  if(m.columns[0][1] > 50){
+                    document.getElementById("chart").style.display = "none";
+                    document.getElementById("status").style.display = "none";
+                    document.getElementById("missing").style.display = "none";
+                    document.getElementById("reset").style.display = "";
+                  }
+              }
+              else if(m.columns[0][1] == 255255){
+                ///////////////
+                //Do Nothing //  
+                ///////////////
+              }              
+              else{
+                    document.getElementById("chart").style.display = "";
+                    document.getElementById("missing").style.display = "none";
+                    document.getElementById("reset").style.display = "none";
+                    
+                    newLevel = ((m.columns[0][1] - 900)/18);
+                    m.columns[0][1] = Math.round(newLevel);
+                                      
+                    if(newLevel > 100){
+                        newLevel = 100;
+                    }
+                  
+                    if(newLevel > brewLevel){
+                            document.getElementById("status").style.display = "";  
+                            var element = document.getElementById("status");
+                            element.innerHTML = "More Coffee Brewing Now";                        
+                             
+                    }
+                    else if(newLevel <= brewLevel){
+                            //document.getElementById("status").style.display = "none"; 
+                            element.innerHTML = "Get It While Its Hot!";                        
+
+                    }
+                    brewLevel = newLevel;
+              }
+          },
+          generate: {
+                size: {
+                    width: 400,
+                    height: 400
+                },
+                bindto: '#chart',
+                data: {
+                  labels: true,
+                  type: 'bar',
+                  colors: {
+                    Coffee: '#FF5E5E',
+                  },
+                },
+                transition: {
+                    duration: 1500
+                },
+                legend: {
+                    show: false
+                },
+                axis: {
+                    y: {
+                        max: 100,
+                        min: 0,
+                        // Range includes padding, set 0 if no padding needed
+                        padding: {top:0, bottom:0},
+                        label: {
+                            text: '% Full',
+                            posistion: 'inner-bottom'
+                        }
+                    },
+                    x : {
+                        type : 'categorized',
+                        tick: {
+                            format: function (x) { return ''; }
+                        }
+                    }
+                },
+                bar: {
+                  width: {
+                    ratio: 0.625
+                  }
+                },
+                tooltip: {
+                    show: false
+                },
+              grid: {
+                    y: {
+                        show: true
+                    }
+              }
+          }
+        });
+    </script>
+    <script>    
+//    var count = 0;
+//    setInterval(function(){
+//      pubnub.publish({
+//        channel: channel,
+//        message: {
+//          columns: [
+////             ['Coffee', Math.floor(Math.random() * 100)]
+//               ['Coffee', count]
+//
+//          ]
+//        }
+//      });
+//        count++;
+//        if(count > 80){count += -50;}
+//    }, 1500);
+    </script>
+    
+
+
+  </body>
+</html>
+
