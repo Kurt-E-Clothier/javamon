@@ -1341,132 +1341,6 @@ Basic schematic elements and footprints for polarized surface mount and through 
 </deviceset>
 </devicesets>
 </library>
-<library name="Crystals and Oscillators">
-<description>&lt;b&gt;Crystals and Oscillators&lt;/b&gt;&lt;p&gt;
-Types of components:
-
-&lt;ul&gt;
-&lt;li&gt;Crystals
-&lt;li&gt;Oscillators
-&lt;li&gt;Resonators
-&lt;li&gt;Sockets and Insulators
-&lt;li&gt;VCOs (Voltage Controllled Oscillators)
-
-&lt;/ul&gt;
-&lt;li&gt;&lt;author&gt;Created by Kurt E. Clothier; 3/10/2013&lt;/author&gt;
-&lt;br&gt;&lt;i&gt;www.projectsbykec.com&lt;/i&gt;</description>
-<packages>
-<package name="RESONATOR-SMD">
-<wire x1="1.8" y1="0.65" x2="1.8" y2="-0.65" width="0.2032" layer="21"/>
-<wire x1="-1.8" y1="-0.65" x2="-1.8" y2="0.65" width="0.2032" layer="21"/>
-<wire x1="-1.6" y1="0.65" x2="1.6" y2="0.65" width="0.127" layer="51"/>
-<wire x1="1.6" y1="0.65" x2="1.6" y2="-0.65" width="0.127" layer="51"/>
-<wire x1="1.6" y1="-0.65" x2="-1.6" y2="-0.65" width="0.127" layer="51"/>
-<wire x1="-1.6" y1="-0.65" x2="-1.6" y2="0.65" width="0.127" layer="51"/>
-<smd name="1" x="-1.2" y="0" dx="0.7" dy="1.7" layer="1"/>
-<smd name="2" x="0" y="0" dx="0.7" dy="1.7" layer="1"/>
-<smd name="3" x="1.2" y="0" dx="0.7" dy="1.7" layer="1"/>
-<text x="-0.889" y="1.27" size="0.4064" layer="25">&gt;Name</text>
-<text x="-0.889" y="-1.524" size="0.4064" layer="27">&gt;Value</text>
-</package>
-<package name="RESONATOR-PTH">
-<wire x1="-2.286" y1="1.778" x2="-2.286" y2="-1.778" width="0.2032" layer="21" curve="162.403081"/>
-<wire x1="2.286" y1="-1.778" x2="2.286" y2="1.778" width="0.2032" layer="21" curve="162.403081"/>
-<wire x1="-2.286" y1="-1.778" x2="2.286" y2="-1.778" width="0.2032" layer="21" curve="12.71932"/>
-<wire x1="2.286" y1="1.778" x2="-2.286" y2="1.778" width="0.2032" layer="21" curve="12.758496"/>
-<pad name="2" x="0" y="0" drill="0.8" diameter="1.8796"/>
-<pad name="1" x="-2.54" y="0" drill="0.8" diameter="1.8796"/>
-<pad name="3" x="2.54" y="0" drill="0.8" diameter="1.8796"/>
-</package>
-<package name="RESONATOR-SMD-WIDE">
-<wire x1="-3.3" y1="2.3" x2="-3.7" y2="2.3" width="0.127" layer="121"/>
-<wire x1="-3.7" y1="2.3" x2="-3.7" y2="-2.4" width="0.127" layer="121"/>
-<wire x1="-3.7" y1="-2.4" x2="-3.3" y2="-2.4" width="0.127" layer="121"/>
-<wire x1="3.3" y1="2.3" x2="3.8" y2="2.3" width="0.127" layer="121"/>
-<wire x1="3.8" y1="2.3" x2="3.8" y2="-2.4" width="0.127" layer="121"/>
-<wire x1="3.8" y1="-2.4" x2="3.3" y2="-2.4" width="0.127" layer="121"/>
-<smd name="1" x="-2.5" y="0" dx="1.7" dy="4" layer="1" rot="R180"/>
-<smd name="2" x="0" y="0" dx="1.5" dy="4" layer="1" rot="R180"/>
-<smd name="3" x="2.5" y="0" dx="1.7" dy="4" layer="1" rot="R180"/>
-</package>
-</packages>
-<symbols>
-<symbol name="RESONATOR">
-<description>Standard resonator symbol (with capacitors).</description>
-<wire x1="1.016" y1="0" x2="2.54" y2="0" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="0" x2="-1.016" y2="0" width="0.1524" layer="94"/>
-<wire x1="-0.381" y1="1.524" x2="-0.381" y2="-1.524" width="0.1524" layer="94"/>
-<wire x1="-0.381" y1="-1.524" x2="0.381" y2="-1.524" width="0.1524" layer="94"/>
-<wire x1="0.381" y1="-1.524" x2="0.381" y2="1.524" width="0.1524" layer="94"/>
-<wire x1="0.381" y1="1.524" x2="-0.381" y2="1.524" width="0.1524" layer="94"/>
-<wire x1="1.016" y1="1.778" x2="1.016" y2="0" width="0.1524" layer="94"/>
-<wire x1="1.016" y1="0" x2="1.016" y2="-1.778" width="0.1524" layer="94"/>
-<wire x1="-1.016" y1="1.778" x2="-1.016" y2="0" width="0.1524" layer="94"/>
-<wire x1="-1.016" y1="0" x2="-1.016" y2="-1.778" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-2.032" width="0.1524" layer="94"/>
-<wire x1="3.302" y1="-2.032" x2="2.54" y2="-2.032" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="-2.032" x2="1.778" y2="-2.032" width="0.1524" layer="94"/>
-<wire x1="3.302" y1="-3.048" x2="2.54" y2="-3.048" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="-3.048" x2="1.778" y2="-3.048" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="-3.048" x2="2.54" y2="-5.08" width="0.1524" layer="94"/>
-<wire x1="-1.778" y1="-3.048" x2="-2.54" y2="-3.048" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="-3.048" x2="-3.302" y2="-3.048" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="-3.048" x2="-2.54" y2="-5.08" width="0.1524" layer="94"/>
-<wire x1="-1.778" y1="-2.032" x2="-2.54" y2="-2.032" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="-2.032" x2="-3.302" y2="-2.032" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="-2.032" x2="-2.54" y2="0" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="-5.08" x2="0" y2="-5.08" width="0.1524" layer="94"/>
-<wire x1="0" y1="-5.08" x2="-2.54" y2="-5.08" width="0.1524" layer="94"/>
-<wire x1="0" y1="-5.08" x2="0" y2="-7.62" width="0.1524" layer="94"/>
-<text x="-4.064" y="-1.524" size="1.27" layer="95" rot="MR0">&gt;NAME</text>
-<text x="-4.064" y="-4.064" size="1.27" layer="96" rot="MR0">&gt;VALUE</text>
-<pin name="3" x="2.54" y="0" visible="off" length="point" direction="pas" swaplevel="1" rot="R180"/>
-<pin name="1" x="-2.54" y="0" visible="off" length="point" direction="pas" swaplevel="1"/>
-<pin name="2" x="0" y="-7.62" visible="off" length="point" direction="pas" swaplevel="1" rot="R90"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="RESONATOR" prefix="X">
-<description>&lt;b&gt;Resonator&lt;/b&gt;&lt;p&gt;
-Various sizes, with capacitors</description>
-<gates>
-<gate name="X" symbol="RESONATOR" x="0" y="0"/>
-</gates>
-<devices>
-<device name="-SMD" package="RESONATOR-SMD">
-<connects>
-<connect gate="X" pin="1" pad="1"/>
-<connect gate="X" pin="2" pad="2"/>
-<connect gate="X" pin="3" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="&quot;" package="RESONATOR-PTH">
-<connects>
-<connect gate="X" pin="1" pad="1"/>
-<connect gate="X" pin="2" pad="2"/>
-<connect gate="X" pin="3" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="-SMD_WIDE" package="RESONATOR-SMD-WIDE">
-<connects>
-<connect gate="X" pin="1" pad="1"/>
-<connect gate="X" pin="2" pad="2"/>
-<connect gate="X" pin="3" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="Switches">
 <description>&lt;b&gt;Switches&lt;/b&gt;&lt;p&gt;
 This library contains all types of switches such as:
@@ -3010,9 +2884,7 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <part name="C1" library="Passive Components" deviceset="CAPACITOR" device="-0805" value=".1u"/>
 <part name="C2" library="Passive Components" deviceset="CAPACITOR" device="-0805" value=".1u"/>
 <part name="R1" library="Passive Components" deviceset="RESISTOR" device="-0805" value="10k"/>
-<part name="X1" library="Crystals and Oscillators" deviceset="RESONATOR" device="-SMD_WIDE" value="8MHz"/>
 <part name="SW1" library="Switches" deviceset="SPST_OFF-MOM" device="-TACTILE-PTH"/>
-<part name="SUP2" library="Power Management" deviceset="GND-DIGITAL" device=""/>
 <part name="SUP3" library="Power Management" deviceset="GND-DIGITAL" device=""/>
 <part name="SUP4" library="Power Management" deviceset="GND-DIGITAL" device=""/>
 <part name="SUP5" library="Power Management" deviceset="GND-DIGITAL" device=""/>
@@ -3059,9 +2931,7 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <instance part="C1" gate="C" x="104.14" y="114.3"/>
 <instance part="C2" gate="C" x="104.14" y="101.6"/>
 <instance part="R1" gate="R" x="101.6" y="121.92"/>
-<instance part="X1" gate="X" x="106.68" y="76.2"/>
 <instance part="SW1" gate="SW" x="106.68" y="127"/>
-<instance part="SUP2" gate="1" x="106.68" y="68.58"/>
 <instance part="SUP3" gate="1" x="104.14" y="96.52"/>
 <instance part="SUP4" gate="1" x="104.14" y="109.22"/>
 <instance part="SUP5" gate="1" x="93.98" y="127"/>
@@ -3091,10 +2961,10 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <instance part="SUP13" gate="G$1" x="210.82" y="88.9" rot="MR0"/>
 <instance part="JP3" gate="G$1" x="231.14" y="48.26" rot="MR0"/>
 <instance part="SUP14" gate="1" x="226.06" y="43.18"/>
-<instance part="R2" gate="R" x="182.88" y="99.06" rot="MR0"/>
+<instance part="R2" gate="R" x="180.34" y="99.06" rot="MR0"/>
 <instance part="SUP15" gate="G$1" x="101.6" y="50.8"/>
-<instance part="R3" gate="R" x="190.5" y="96.52" rot="MR0"/>
-<instance part="SUP17" gate="G$1" x="190.5" y="106.68" rot="MR180"/>
+<instance part="R3" gate="R" x="187.96" y="96.52" rot="MR0"/>
+<instance part="SUP17" gate="G$1" x="187.96" y="106.68" rot="MR180"/>
 </instances>
 <busses>
 <bus name="LCD[1..16]">
@@ -3109,21 +2979,6 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 </bus>
 </busses>
 <nets>
-<net name="N$5" class="0">
-<segment>
-<pinref part="IC1" gate="MCU" pin="XTAL2/TOSC2"/>
-<pinref part="X1" gate="X" pin="3"/>
-<wire x1="109.22" y1="76.2" x2="114.3" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$6" class="0">
-<segment>
-<pinref part="IC1" gate="MCU" pin="XTAL1/TOSC1"/>
-<pinref part="X1" gate="X" pin="1"/>
-<wire x1="114.3" y1="83.82" x2="104.14" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="83.82" x2="104.14" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="!RST" class="0">
 <segment>
 <pinref part="IC1" gate="MCU" pin="!RESET"/>
@@ -3137,10 +2992,6 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 </segment>
 </net>
 <net name="GND-D" class="0">
-<segment>
-<pinref part="X1" gate="X" pin="2"/>
-<pinref part="SUP2" gate="1" pin="GND-D"/>
-</segment>
 <segment>
 <pinref part="IC1" gate="MCU" pin="GND@1"/>
 <pinref part="C1" gate="C" pin="2"/>
@@ -3201,54 +3052,49 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 </net>
 <net name="LCD10" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="RXD"/>
-<wire x1="162.56" y1="86.36" x2="193.04" y2="86.36" width="0.1524" layer="91"/>
-<label x="165.1" y="86.36" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="10"/>
 <wire x1="226.06" y1="114.3" x2="220.98" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<wire x1="162.56" y1="111.76" x2="193.04" y2="111.76" width="0.1524" layer="91"/>
+<label x="165.1" y="111.76" size="1.778" layer="95"/>
+<pinref part="IC1" gate="MCU" pin="MISO"/>
 </segment>
 </net>
 <net name="LCD9" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="TXD"/>
-<wire x1="162.56" y1="83.82" x2="193.04" y2="83.82" width="0.1524" layer="91"/>
-<label x="165.1" y="83.82" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="9"/>
 <wire x1="226.06" y1="111.76" x2="220.98" y2="111.76" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<wire x1="162.56" y1="109.22" x2="193.04" y2="109.22" width="0.1524" layer="91"/>
+<label x="165.1" y="109.22" size="1.778" layer="95"/>
+<pinref part="IC1" gate="MCU" pin="SCK"/>
 </segment>
 </net>
 <net name="LCD8" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="INT0"/>
-<wire x1="162.56" y1="81.28" x2="193.04" y2="81.28" width="0.1524" layer="91"/>
-<label x="165.1" y="81.28" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="8"/>
 <wire x1="226.06" y1="109.22" x2="220.98" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="XTAL1/TOSC1"/>
+<wire x1="114.3" y1="83.82" x2="109.22" y2="83.82" width="0.1524" layer="91"/>
+<label x="111.76" y="83.82" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="LCD7" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="INT1"/>
-<wire x1="162.56" y1="78.74" x2="193.04" y2="78.74" width="0.1524" layer="91"/>
-<label x="165.1" y="78.74" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="7"/>
 <wire x1="226.06" y1="106.68" x2="220.98" y2="106.68" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="XTAL2/TOSC2"/>
+<wire x1="114.3" y1="76.2" x2="109.22" y2="76.2" width="0.1524" layer="91"/>
+<label x="111.76" y="76.2" size="1.778" layer="95" rot="R180"/>
+</segment>
 </net>
 <net name="LCD6" class="0">
-<segment>
-<pinref part="IC1" gate="MCU" pin="XCK/T0"/>
-<wire x1="162.56" y1="76.2" x2="193.04" y2="76.2" width="0.1524" layer="91"/>
-<label x="165.1" y="76.2" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="JP1" gate="G$1" pin="6"/>
 <wire x1="226.06" y1="104.14" x2="220.98" y2="104.14" width="0.1524" layer="91"/>
@@ -3256,54 +3102,44 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 </net>
 <net name="LCD5" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="T1/OC0B"/>
-<wire x1="162.56" y1="73.66" x2="193.04" y2="73.66" width="0.1524" layer="91"/>
-<label x="165.1" y="73.66" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="5"/>
 <wire x1="226.06" y1="101.6" x2="220.98" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LCD16" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="CLK0/ICP1"/>
-<wire x1="162.56" y1="121.92" x2="193.04" y2="121.92" width="0.1524" layer="91"/>
-<label x="165.1" y="121.92" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="16"/>
 <wire x1="226.06" y1="129.54" x2="220.98" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="XCK/T0"/>
+<wire x1="162.56" y1="76.2" x2="193.04" y2="76.2" width="0.1524" layer="91"/>
+<label x="165.1" y="76.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD15" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="OC1A"/>
-<wire x1="162.56" y1="119.38" x2="193.04" y2="119.38" width="0.1524" layer="91"/>
-<label x="165.1" y="119.38" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="15"/>
 <wire x1="226.06" y1="127" x2="220.98" y2="127" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="T1/OC0B"/>
+<wire x1="162.56" y1="73.66" x2="193.04" y2="73.66" width="0.1524" layer="91"/>
+<label x="165.1" y="73.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD14" class="0">
 <segment>
-<pinref part="IC1" gate="MCU" pin="~SS/OC1B"/>
-<wire x1="162.56" y1="116.84" x2="193.04" y2="116.84" width="0.1524" layer="91"/>
-<label x="165.1" y="116.84" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="14"/>
 <wire x1="226.06" y1="124.46" x2="220.98" y2="124.46" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="CLK0/ICP1"/>
+<wire x1="162.56" y1="121.92" x2="193.04" y2="121.92" width="0.1524" layer="91"/>
+<label x="165.1" y="121.92" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="S_PWR_CTL" class="0">
-<segment>
-<pinref part="IC1" gate="MCU" pin="ADC0"/>
-<wire x1="162.56" y1="104.14" x2="167.64" y2="104.14" width="0.1524" layer="91"/>
-<label x="165.1" y="104.14" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="Q1" gate="Q" pin="G"/>
 <wire x1="215.9" y1="63.5" x2="210.82" y2="63.5" width="0.1524" layer="91"/>
@@ -3313,13 +3149,13 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <wire x1="210.82" y1="58.42" x2="210.82" y2="63.5" width="0.1524" layer="91"/>
 <junction x="210.82" y="63.5"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="INT0"/>
+<wire x1="162.56" y1="81.28" x2="167.64" y2="81.28" width="0.1524" layer="91"/>
+<label x="165.1" y="81.28" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="!B_UNIT" class="0">
-<segment>
-<pinref part="IC1" gate="MCU" pin="ADC1"/>
-<wire x1="162.56" y1="101.6" x2="167.64" y2="101.6" width="0.1524" layer="91"/>
-<label x="165.1" y="101.6" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="JP2" gate="G$1" pin="3"/>
 <label x="223.52" y="76.2" size="1.778" layer="95" rot="R180"/>
@@ -3327,13 +3163,13 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <wire x1="210.82" y1="78.74" x2="210.82" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="76.2" x2="226.06" y2="76.2" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="RXD"/>
+<wire x1="162.56" y1="86.36" x2="167.64" y2="86.36" width="0.1524" layer="91"/>
+<label x="165.1" y="86.36" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="!B_ZERO" class="0">
-<segment>
-<pinref part="IC1" gate="MCU" pin="ADC2"/>
-<wire x1="162.56" y1="99.06" x2="167.64" y2="99.06" width="0.1524" layer="91"/>
-<label x="165.1" y="99.06" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="JP2" gate="G$1" pin="2"/>
 <label x="223.52" y="73.66" size="1.778" layer="95" rot="R180"/>
@@ -3341,18 +3177,23 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <wire x1="203.2" y1="76.2" x2="203.2" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="73.66" x2="226.06" y2="73.66" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="TXD"/>
+<wire x1="162.56" y1="83.82" x2="167.64" y2="83.82" width="0.1524" layer="91"/>
+<label x="165.1" y="83.82" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="!ESP_RST" class="0">
-<segment>
-<pinref part="IC1" gate="MCU" pin="ADC3"/>
-<wire x1="162.56" y1="96.52" x2="167.64" y2="96.52" width="0.1524" layer="91"/>
-<label x="165.1" y="96.52" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="R9" gate="R" pin="1"/>
 <wire x1="154.94" y1="50.8" x2="167.64" y2="50.8" width="0.1524" layer="91"/>
 <label x="154.94" y="50.8" size="1.778" layer="95"/>
 <pinref part="IC2" gate="G$1" pin="~RESET"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="INT1"/>
+<wire x1="162.56" y1="78.74" x2="167.64" y2="78.74" width="0.1524" layer="91"/>
+<label x="165.1" y="78.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="AIN1" class="0">
@@ -3380,35 +3221,35 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 </net>
 <net name="LCD11" class="0">
 <segment>
-<wire x1="162.56" y1="109.22" x2="193.04" y2="109.22" width="0.1524" layer="91"/>
-<label x="165.1" y="109.22" size="1.778" layer="95"/>
-<pinref part="IC1" gate="MCU" pin="SCK"/>
-</segment>
-<segment>
 <pinref part="JP1" gate="G$1" pin="11"/>
 <wire x1="226.06" y1="116.84" x2="220.98" y2="116.84" width="0.1524" layer="91"/>
 </segment>
-</net>
-<net name="LCD12" class="0">
-<segment>
-<wire x1="162.56" y1="111.76" x2="193.04" y2="111.76" width="0.1524" layer="91"/>
-<label x="165.1" y="111.76" size="1.778" layer="95"/>
-<pinref part="IC1" gate="MCU" pin="MISO"/>
-</segment>
-<segment>
-<pinref part="JP1" gate="G$1" pin="12"/>
-<wire x1="226.06" y1="119.38" x2="220.98" y2="119.38" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="LCD13" class="0">
 <segment>
 <wire x1="162.56" y1="114.3" x2="193.04" y2="114.3" width="0.1524" layer="91"/>
 <label x="165.1" y="114.3" size="1.778" layer="95"/>
 <pinref part="IC1" gate="MCU" pin="MOSI/OC2A"/>
 </segment>
+</net>
+<net name="LCD12" class="0">
+<segment>
+<pinref part="JP1" gate="G$1" pin="12"/>
+<wire x1="226.06" y1="119.38" x2="220.98" y2="119.38" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="~SS/OC1B"/>
+<wire x1="162.56" y1="116.84" x2="193.04" y2="116.84" width="0.1524" layer="91"/>
+<label x="165.1" y="116.84" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="LCD13" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="13"/>
 <wire x1="226.06" y1="121.92" x2="220.98" y2="121.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="MCU" pin="OC1A"/>
+<wire x1="162.56" y1="119.38" x2="193.04" y2="119.38" width="0.1524" layer="91"/>
+<label x="165.1" y="119.38" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD2" class="0">
@@ -3514,12 +3355,12 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 </segment>
 <segment>
 <pinref part="R3" gate="R" pin="1"/>
-<wire x1="190.5" y1="101.6" x2="190.5" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="101.6" x2="187.96" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="R2" gate="R" pin="1"/>
-<wire x1="190.5" y1="104.14" x2="182.88" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="104.14" x2="180.34" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="SUP17" gate="G$1" pin="+3.3V"/>
-<wire x1="190.5" y1="106.68" x2="190.5" y2="104.14" width="0.1524" layer="91"/>
-<junction x="190.5" y="104.14"/>
+<wire x1="187.96" y1="106.68" x2="187.96" y2="104.14" width="0.1524" layer="91"/>
+<junction x="187.96" y="104.14"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -3532,7 +3373,7 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <pinref part="IC1" gate="MCU" pin="ADC5/SCL"/>
 <label x="165.1" y="91.44" size="1.778" layer="95"/>
 <pinref part="R3" gate="R" pin="2"/>
-<wire x1="190.5" y1="91.44" x2="162.56" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="91.44" x2="162.56" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SDA" class="0">
@@ -3545,7 +3386,7 @@ Datasheet: http://www.onsemi.com/pub_link/Collateral/NTD4960N.PDF
 <pinref part="IC1" gate="MCU" pin="ADC4/SDA"/>
 <label x="165.1" y="93.98" size="1.778" layer="95"/>
 <pinref part="R2" gate="R" pin="2"/>
-<wire x1="182.88" y1="93.98" x2="162.56" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="93.98" x2="162.56" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC" class="0">
