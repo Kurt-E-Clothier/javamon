@@ -27,7 +27,7 @@
 PROJECT = javamon
 
 # Target file name (without extension).
-TARGET = $(PROJECT)_main-v3.0
+TARGET = $(PROJECT)_main-v4.0
 
 # List C source files here. 
 # Prefix $(SRC_FILES) for each additional source not in project directory.
