@@ -158,7 +158,7 @@ nav a:hover {
 
 h1{text-align: center;
 	text-indent: -.12em;
-	color: #CA3767;
+	color: #d02129;
 	font:270px "Flubber";
 	font-weight: 900;
 	display: inline-block;
@@ -166,16 +166,17 @@ h1{text-align: center;
 	margin: 0 auto;
 	line-height: 1.7;
 	width: 100%;
-	text-shadow: #FFAACC.01em .01em 0,
-			#FFAACC .02em .02em 0,
-			#FFAACC .03em .03em 0,
-			#FFAACC .04em .04em 0,
-			#FFAACC .05em .05em 0,
-			#FFAACC .06em .06em 0,
-			#FFAACC .07em .07em 0,			
-			#FFAACC .08em .08em 0,
-			#FFAACC.09em .09em 0,
-			#FFAACC .1em .1em 0;
+	text-shadow: 
+            #eff1f1.01em .01em 0,
+			#eff1f1 .02em .02em 0,
+			#eff1f1 .03em .03em 0,
+			#eff1f1 .04em .04em 0,
+			#eff1f1 .05em .05em 0,
+			#005167 .06em .06em 0,
+			#005167 .07em .07em 0,			
+			#005167 .08em .08em 0,
+			#005167.09em .09em 0,
+			#005167 .1em .1em 0;
 }
 ::-moz-selection{background: rgba(0,0,0, 0.075); color:#fefcf2;}
 ::selection{background: rgba(0,0,0, 0.075); color: #fefcf2;} 
@@ -192,7 +193,7 @@ h2 {
   -webkit-animation: loading 5s ease-out infinite;
 }
 .red{
-  color: #FF5E5E;
+  color: #d02129;
 	text-shadow: 0 0 15px #FF5E5E;
 }
 @-webkit-keyframes loading{
