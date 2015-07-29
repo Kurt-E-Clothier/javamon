@@ -15,7 +15,8 @@
     
 </head>
 
-<body style="text-align:center; background: #19a2c6; height: 100vh;">
+    
+<body style="text-align:center; background: #19a2c6; height: 100vh;" >
 
 
     
@@ -41,6 +42,22 @@
     
     <script>
         
+        function historyCall(){
+            pubnub.history({
+                channel: 'javamon',
+                callback: function(m){
+                    console.log(m[0][0]);
+                    pubnub.publish({
+                        channel: 'javamon',
+                        message: m[0][0]
+                    });  
+                },
+                count: 1, // 100 is the default
+                reverse: false // false is the default
+            });
+        };    
+    
+        
         var pubnub = PUBNUB.init({
             publish_key: 'demo',
             subscribe_key: 'demo'
@@ -52,6 +69,7 @@
         eon.chart({
           pubnub:pubnub,
           channel: channel,
+          connect: historyCall,
           message: function(m){
               //Pot is missing
               if(m.columns[0][1] < 850){
@@ -91,7 +109,7 @@
                     }
                     else if(newLevel <= brewLevel){
                         document.getElementById("status").style.display = "";  
-                        var element = document.getElementById("status");                                         element.innerHTML = "Get It While Its Hot!";                      
+                        var element = document.getElementById("status");                                         element.innerHTML = "Get It While It's Hot!";                      
                     }
                     brewLevel = newLevel;
               }
