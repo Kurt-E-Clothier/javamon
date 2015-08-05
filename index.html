@@ -41,22 +41,17 @@
     
     <script>
 
-		// Look at publish history. If a message has been published in the last
-		// few minutes, republish it. Otherwise, display "No Pot" status
+	// Look at publish history. If a message has been published in the last
+	// few minutes, republish it. Otherwise, display "No Pot" status
         function historyCall(){
-			var unixTime = Date.now() / 1000;	// in seconds
-			var endTime = (unixTime - (5 * 60));
+		var unixTime = Date.now() / 1000;	// in seconds
+		var endTime = (unixTime - (5 * 60));
             pubnub.history({
                 channel: 'javamon',
                 count: 1,
 				end: endTime * 10000000,
                 reverse: false,
                 callback: function(m){
-					//console.log (m);
-					//console.log (unixTime);
-					//console.log (endTime);
-					//console.log (m[1]/10000000);
-					//console.log (m[2]/10000000);
 					// If there is a message, publish it.
 					if (m[2] != 0) {
 		                pubnub.publish({
