@@ -33,26 +33,45 @@
     
     <div id="missing" style="display: none;">
         <h1 aria-label="Flubber" style="font-size: 6em;">
-            <span class="char1" aria-hidden="true">Cant Find</span></br>
+            <span class="char1" aria-hidden="true">Can't Find</span></br>
             <span class="char2" aria-hidden="true">That Darn</span>
             <span class="char3" aria-hidden="true">Coffee Pot</span>
         </h1>
     </div>
     
     <script>
-        
+
+		// Look at publish history. If a message has been published in the last
+		// few minutes, republish it. Otherwise, display "No Pot" status
         function historyCall(){
+			var unixTime = Date.now() / 1000;	// in seconds
+			var endTime = (unixTime - (5 * 60));
             pubnub.history({
                 channel: 'javamon',
+                count: 1,
+				end: endTime * 10000000,
+                reverse: false,
                 callback: function(m){
-                    console.log(m[0][0]);
-                    pubnub.publish({
-                        channel: 'javamon',
-                        message: m[0][0]
-                    });  
-                },
-                count: 1, // 100 is the default
-                reverse: false // false is the default
+					//console.log (m);
+					//console.log (unixTime);
+					//console.log (endTime);
+					//console.log (m[1]/10000000);
+					//console.log (m[2]/10000000);
+					// If there is a message, publish it.
+					if (m[2] != 0) {
+		                pubnub.publish({
+			                channel: 'javamon',
+				            message: m[0][0]
+					    });
+					}
+					// Otherwise, can't find the pot
+					else {
+						document.getElementById("chart").style.display = "none";
+						document.getElementById("status").style.display = "none";
+					    document.getElementById("missing").style.display = "none";
+		                document.getElementById("reset").style.display = "";                 
+					}
+                }
             });
         };    
     
