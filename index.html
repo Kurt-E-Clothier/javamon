@@ -52,25 +52,20 @@
 				end: endTime * 10000000,
                 reverse: false,
                 callback: function(m){
-					//console.log (m);
-					//console.log (unixTime);
-					//console.log (endTime);
-					//console.log (m[1]/10000000);
-					//console.log (m[2]/10000000);
-					// If there is a message, publish it.
-					if (m[2] != 0) {
+			// If there is a message, publish it.
+			if (m[2] != 0) {
 		                pubnub.publish({
-			                channel: 'javamon',
-				            message: m[0][0]
-					    });
-					}
-					// Otherwise, can't find the pot
-					else {
-						document.getElementById("chart").style.display = "none";
-						document.getElementById("status").style.display = "none";
-					    document.getElementById("missing").style.display = "none";
+			               channel: 'javamon',
+				       message: m[0][0]
+				});
+			}
+			// Otherwise, can't find the pot
+			else {
+				document.getElementById("chart").style.display = "none";
+				document.getElementById("status").style.display = "none";
+				document.getElementById("missing").style.display = "none";
 		                document.getElementById("reset").style.display = "";                 
-					}
+			}
                 }
             });
         };    
